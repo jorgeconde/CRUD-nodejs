@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' media='screen'>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      
+    <div id="header" class="page-header">
+      <h1><a href="/">Preguntados </a><small>Administrador</small></h1>
+    </div>
+    
+    <div class="container">
+      
+    <div id="menu" class="list-group">
+      <a href="/categories" class="list-group-item">Categorías</a>
+      <a href="/questions" class="list-group-item">Preguntas</a>
+      <a href="/valquestions" class="list-group-item">Preguntas por validar</a>
+    </div>
+      
+    <div id="inputheader"><h3>Agregar Respuesta</h3></div>
+        
+    <form method="post" action="/answers/add" class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="inputQuestionID3" class="col-sm-2 control-label">ID Pregunta</label>
+        <div class="col-sm-10" style="width:400px;">
+          <input type="text" class="form-control" id="inputQuestionID3" name="id_pregunta" placeholder="ID Pregunta">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPosition3" class="col-sm-2 control-label">Posición</label>
+        <div class="col-sm-10" style="width:400px;">
+          <input type="text" class="form-control" id="inputPosition3" name="posicion" placeholder="Posición">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAnswer3" class="col-sm-2 control-label">Respuesta</label>
+        <div class="col-sm-10" style="width:400px;">
+          <input type="text" class="form-control" id="inputAnswer3" name="respuesta" placeholder="Respuesta">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputTrue3" class="col-sm-2 control-label">Verdadera</label>
+        <div class="col-sm-10" style="width:400px;">
+          <input type="text" class="form-control" id="inputTrue3" name="verdadera" placeholder="Verdadera">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputActive3" class="col-sm-2 control-label">Activa</label>
+        <div class="col-sm-10" style="width:400px;">
+          <input type="text" class="form-control" id="inputActive3" name="activa" placeholder="Activa">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10" style="margin-top:30px;">
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-danger" onClick="cancelAddAnswer()">Cancel</button>
+        </div>
+      </div>
+    </form>
+          
+    </div>
+    
+    <script src="/js/jquery-2.0.2.min.js"></script> 
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/all.js"></script>
+  </body>
+</html>

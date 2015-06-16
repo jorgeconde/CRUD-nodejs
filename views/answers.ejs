@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' media='screen'>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      
+    <div id="header" class="page-header">
+      <h1><a href="/">Preguntados </a><small>Administrador</small></h1>
+    </div>
+    
+    <div class="container">
+      
+    <div id="menu" class="list-group">
+      <a href="/categories" class="list-group-item">Categorías</a>
+      <a href="/questions" class="list-group-item">Preguntas</a>
+      <a href="/valquestions" class="list-group-item">Preguntas por validar</a>
+    </div>
+      
+    <div>
+    <!--<button onClick="addAnswer();" type="button" class="btn btn-warning">+ Add</button>-->
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#ID_Pregunta</th>
+            <th>Posición</th>
+            <th width="400px">Respuesta</th>
+            <th>Verdadera</th>
+            <th>Activa</th>
+            <!--<th width="150px">Action</th>-->
+        </tr>
+    </thead>
+    <tbody>
+            <% if(data.length){ 
+                                
+                 for(var i = 0;i < data.length;i++) { %>
+                 
+                <tr>
+                    <td><%=data[i].id_pregunta%></td>
+                    <td><%=data[i].posicion%></td>
+                    <td><%=data[i].respuesta%></td>
+                    <td><%=data[i].verdadera%></td>
+                    <td><%=data[i].activa%></td>
+                    <!--<td>
+                        <button type="button" class="btn btn-info">Edit</button>         
+                        <button type="button" class="btn btn-danger" 
+                                onClick="deleteAnswer(<%=data[i].id_pregunta%>,<%=data[i].posicion%>,'<%=data[i].respuesta%>')">
+                            Delete
+                        </button>          
+                     </td>-->
+                </tr>
+            <% }
+            
+             }else{ %>
+                 <tr>
+                    <td colspan="3">No se encontraron preguntas</td>
+                 </tr>
+            <% } %>
+    </tbody>
+    </table>
+    </div>
+          
+    </div>
+    
+    <script src="/js/jquery-2.0.2.min.js"></script> 
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/all.js"></script>
+  </body>
+</html>

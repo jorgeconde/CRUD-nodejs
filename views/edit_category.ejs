@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' media='screen'>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="../../farbtastic/farbtastic.css" type="text/css" />
+  </head>
+  <body>
+      
+    <div id="header" class="page-header">
+      <h1><a href="/">Preguntados </a><small>Administrador</small></h1>
+    </div>
+    
+    <div class="container">
+      
+    <div id="menu" class="list-group">
+      <a href="/categories" class="list-group-item active">Categorías</a>
+      <a href="/questions" class="list-group-item">Preguntas</a>
+      <a href="/valquestions" class="list-group-item">Preguntas por validar</a>
+    </div>
+    
+    <div id="inputheader"><h3>Editar Categoría</h3></div>
+        
+    <form method="post" action="/categories/edit/<%=data[0].id%>" class="form-horizontal" >
+      <div class="form-group">
+        <label for="inputCategory3" class="col-sm-2 control-label">Categoría</label>
+        <div class="col-sm-10" style="width:400px;">
+          <input type="text" class="form-control" id="inputCategory3" name="categoria" value="<%=data[0].categoria%>" required>
+        </div>
+          <div id="colorpicker"></div>
+      </div>
+      <div class="form-group">
+        <label for="color" class="col-sm-2 control-label">Color</label>
+        <div class="col-sm-10" style="width:400px;">
+          <input type="text" class="form-control" id="color" name="color" value="<%=data[0].color%>" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10" style="margin-top:30px;">
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-danger" onClick="cancelAddCategory()">Cancel</button>
+        </div>
+      </div>
+    </form>
+    
+    </div>
+      
+      
+    <script src="/js/jquery-2.0.2.min.js"></script> 
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/all.js"></script>
+    <script type="text/javascript" src="../../farbtastic/farbtastic.js"></script>
+  </body>
+</html>
+

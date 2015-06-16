@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' media='screen'>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      
+    <div id="header" class="page-header">
+      <h1><a href="/">Preguntados </a><small>Administrador</small></h1>
+    </div>
+    
+    <div class="container">
+      
+    <div id="menu" class="list-group">
+      <a href="/categories" class="list-group-item">Categorías</a>
+      <a href="/questions" class="list-group-item">Preguntas</a>
+      <a href="/valquestions" class="list-group-item active">Preguntas por validar</a>
+    </div>
+      
+    <div id="inputheader"><h3>Editar Pregunta</h3></div>
+        
+    <form method="post" action="/valquestions/edit/<%=data.id_pregunta%>" class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="inputCategoryID3" class="col-sm-2 control-label">ID Categoría</label>
+        <div class="col-sm-10" style="width:400px;">
+            <select class="form-control" name="id_categoria" required>
+                
+            <% if(categorias.length){ 
+                                
+                for(var i = 0;i < categorias.length;i++) { %>
+                
+                <% if(categorias[i].id === data.id_categoria){ %>
+                <option value="<%=categorias[i].id%>" selected="selected"><%=categorias[i].id%> - <%=categorias[i].categoria%></option>
+                <% } else { %>
+                <option value="<%=categorias[i].id%>"><%=categorias[i].id%> - <%=categorias[i].categoria%></option>
+                <% } %>
+                
+            <% }
+        
+             }else{ %>
+               <option value="">No se encontraron categorias</option>
+            <% } %>
+            </select>
+          <input type="text" name="id_pregunta" value="<%=data.id_pregunta%>" hidden>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPregunta3" class="col-sm-2 control-label">Pregunta</label>
+        <div class="col-sm-10" style="width:400px;">
+          <input type="text" class="form-control" id="inputPregunta3" name="pregunta" value="<%=data.pregunta%>" required>
+        </div>
+      </div>
+        </br>
+      <div class="form-group">
+        <label for="resp1" class="col-sm-2 control-label">Respuesta 1</label>
+        <div class="col-sm-10" style="width:400px;">
+          <% if(data.verdadera1){ %>
+            <div class="input-group">
+            <span class="input-group-addon">
+              <input type="radio" name="verdadera" value="1" checked>
+            </span>
+            <input type="text" class="form-control" id="resp1" name="respuesta1" value="<%=data.respuesta1%>" required>
+          </div>         
+          <% }else{ %>
+            <div class="input-group">
+            <span class="input-group-addon">
+              <input type="radio" name="verdadera" value="1">
+            </span>
+            <input type="text" class="form-control" id="resp1" name="respuesta1" value="<%=data.respuesta1%>" required>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="resp2" class="col-sm-2 control-label">Respuesta 2</label>
+        <div class="col-sm-10" style="width:400px;">
+          <% if(data.verdadera2){ %>
+            <div class="input-group">
+            <span class="input-group-addon">
+              <input type="radio" name="verdadera" value="2" checked>
+            </span>
+            <input type="text" class="form-control" id="resp2" name="respuesta2" value="<%=data.respuesta2%>" required>
+          </div>         
+          <% }else{ %>
+            <div class="input-group">
+            <span class="input-group-addon">
+              <input type="radio" name="verdadera" value="2">
+            </span>
+            <input type="text" class="form-control" id="resp2" name="respuesta2" value="<%=data.respuesta2%>" required>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="resp3" class="col-sm-2 control-label">Respuesta 3</label>
+        <div class="col-sm-10" style="width:400px;">
+          <% if(data.verdadera3){ %>
+            <div class="input-group">
+            <span class="input-group-addon">
+              <input type="radio" name="verdadera" value="3" checked>
+            </span>
+            <input type="text" class="form-control" id="resp3" name="respuesta3" value="<%=data.respuesta3%>" required>
+          </div>         
+          <% }else{ %>
+            <div class="input-group">
+            <span class="input-group-addon">
+              <input type="radio" name="verdadera" value="3">
+            </span>
+            <input type="text" class="form-control" id="resp3" name="respuesta3" value="<%=data.respuesta3%>" required>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="resp4" class="col-sm-2 control-label">Respuesta 4</label>
+        <div class="col-sm-10" style="width:400px;">
+          <% if(data.verdadera4){ %>
+            <div class="input-group">
+            <span class="input-group-addon">
+              <input type="radio" name="verdadera" value="4" checked>
+            </span>
+            <input type="text" class="form-control" id="resp4" name="respuesta4" value="<%=data.respuesta4%>" required>
+          </div>         
+          <% }else{ %>
+            <div class="input-group">
+            <span class="input-group-addon">
+              <input type="radio" name="verdadera" value="4">
+            </span>
+            <input type="text" class="form-control" id="resp4" name="respuesta4" value="<%=data.respuesta4%>" required>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10" style="margin-top:30px;">
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-danger" onClick="cancelAddValQuestion()">Cancel</button>
+        </div>
+      </div>
+    </form>
+          
+    </div>
+     
+    <script src="/js/jquery-2.0.2.min.js"></script> 
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/all.js"></script>
+  </body>
+</html>
+

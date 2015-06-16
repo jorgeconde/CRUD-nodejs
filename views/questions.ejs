@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' media='screen'>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      
+    <div id="header" class="page-header">
+      <h1><a href="/">Preguntados </a><small>Administrador</small></h1>
+    </div>
+    
+    <div class="container">
+      
+    <div id="menu" class="list-group">
+      <a href="/categories" class="list-group-item">Categorías</a>
+      <a href="/questions" class="list-group-item active">Preguntas</a>
+      <a href="/valquestions" class="list-group-item">Preguntas por validar</a>
+    </div>
+      
+    <div>
+    <button onClick="addQuestion();" type="button" class="btn btn-warning">
+        <span class="glyphicon glyphicon-plus"></span>
+        Agregar
+    </button>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#ID_Pregunta</th>
+            <th>#ID_Categoría</th>
+            <th>Pregunta</th>
+            <th width="150px">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+            <% if(data.length){ 
+              var z = 0;
+                                
+              for(var i = 0;i < data.length;i++) { %>
+                 
+                <tr>
+                  <td><%=data[i].id_pregunta%></td>
+                  <td><%=data[i].id_categoria%></td>
+                  <td>
+                  <span><%=data[i].pregunta%></span> <br/>
+                    
+                  <% if(answers[z].verdadera) { %>
+                    <span><small><span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    <%=answers[z].respuesta%></small>
+                    </span><br/>
+                  <% } else { %>
+                    <span><small><span class="glyphicon glyphicon-remove" style="font-size:10px;color:#860404;"></span> 
+                    <%=answers[z].respuesta%></small></span><br/>
+                  <%}
+              
+                    if(answers[z+1].verdadera) { %>
+                    <span><small><span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    <%=answers[z+1].respuesta%></small>
+                    </span><br/>
+                  <% } else { %>
+                    <span><small><span class="glyphicon glyphicon-remove" style="font-size:10px;color:#860404;" ></span> 
+                    <%=answers[z+1].respuesta%></small></span><br/>
+                  <%}
+                    
+                    if(answers[z+2].verdadera) { %>
+                    <span><small><span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    <%=answers[z+2].respuesta%></small>
+                    </span><br/>
+                  <% } else { %>
+                    <span><small><span class="glyphicon glyphicon-remove" style="font-size:10px;color:#860404;"></span> 
+                    <%=answers[z+2].respuesta%></small></span><br/>
+                  <%}
+                    
+                    if(answers[z+3].verdadera) { %>
+                    <span><small><span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    <%=answers[z+3].respuesta%></small>
+                    </span><br/>
+                  <% } else { %>
+                    <span><small><span class="glyphicon glyphicon-remove" style="font-size:10px;color:#860404;"></span> 
+                    <%=answers[z+3].respuesta%></small></span><br/>
+                  <%} %>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-info" onClick="editQuestion(<%=data[i].id_pregunta%>)">
+                            Editar
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>         
+                        <button data-toggle="modal" data-target="#deleteMessage<%=data[i].id_pregunta%>" type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+                    
+                   <!-- MODAL --> 
+                   <div id="deleteMessage<%=data[i].id_pregunta%>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                        <div class="modal-header" style="background-color:#b94a48; color: white;">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title">Eliminar Pregunta</h4>
+                        </div>
+                        <div class="modal-body">
+                          Seguro que desea eliminar esta pregunta?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn-danger"  onClick="deleteQuestion(<%=data[i].id_pregunta%>)">
+                            Sí
+                            <span class="glyphicon glyphicon-trash"></span>
+                          </button>
+                        </div>
+                        </div><!-- /.modal-content -->
+                      </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal --> 
+                                 
+                </tr>
+            <% z = z+4; 
+               }
+            
+             }else{ %>
+                 <tr>
+                    <td colspan="3">No se encontraron preguntas</td>
+                 </tr>
+            <% } %>
+    </tbody>
+    </table>
+    </div>
+          
+    </div>
+    
+    <script src="/js/jquery-2.0.2.min.js"></script> 
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/all.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,62 @@
+#header {
+	margin-top: 0px;
+}
+
+#tables {
+	float: left;
+	padding-left: 20px;
+}
+
+#menu{
+	margin: auto;
+	width: 400px;
+	padding-bottom: 30px;
+}
+
+#inputheader {
+	margin: auto;
+	width: 600px;
+	padding-bottom: 30px;
+}
+
+h1 {
+	color: rgb(43, 72, 133);
+}
+
+h1 a {
+	color: rgb(43, 72, 133);
+	text-decoration: none;
+}
+
+h1 a:visited { 
+	text-decoration:none; 
+}
+
+h1 a:hover { 
+	text-decoration:none; 
+	color: rgb(43, 72, 133);
+}
+
+h1 a:active { 
+	text-decoration:none; 
+}
+
+#square {
+	
+	/* these styles will let the divs line up next to each other
+    while accepting dimensions */
+    display: block;
+    float: left;
+
+    width: 20px;
+    height: 20px;
+    background: black;
+
+    /* a small margin to separate the blocks */
+    margin-right: 5px;
+}
+
+#colorpicker {
+  float: left;
+  height: 0;
+}

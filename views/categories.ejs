@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' media='screen'>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      
+    <div id="header" class="page-header">
+      <h1><a href="/">Preguntados </a><small>Administrador</small></h1>
+    </div>
+    
+    <div class="container">
+      
+    <div id="menu" class="list-group">
+      <a href="/categories" class="list-group-item active">Categorías</a>
+      <a href="/questions" class="list-group-item">Preguntas</a>
+      <a href="/valquestions" class="list-group-item">Preguntas por validar</a>
+    </div>
+      
+    <div>
+        <button onClick="addCategory();" type="button" class="btn btn-warning">
+            <span class="glyphicon glyphicon-plus"></span>
+            Agregar
+        </button>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#ID_Categoría</th>
+            <th>Categoría</th>
+            <th>Color</th>
+            <th width="200px">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+            <% if(data.length){ 
+                                
+                 for(var i = 0;i < data.length;i++) { %>
+                 
+                <tr>
+                    <td><%=data[i].id%></td>
+                    <td><%=data[i].categoria%></td>
+                    <td><%=data[i].color%><div id="square" style="background:<%=data[i].color%>"></div></td>
+                    <td>
+                        <button type="button" class="btn btn-info" onClick="editCategory(<%=data[i].id%>)">
+                            Editar
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>         
+                        <button data-toggle="modal" data-target="#deleteMessage<%=data[i].id%>" type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button> 
+                     </td>
+            
+            <!-- MODAL -->        
+            <div id="deleteMessage<%=data[i].id%>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            <div class="modal-header" style="background-color:#b94a48; color: white;">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Eliminar Categoría</h4>
+            </div>
+            <div class="modal-body">
+                Seguro que desea eliminar esta categoría?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger" onClick="deleteCategory(<%=data[i].id%>)" >
+                Sí
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+            </div>
+            </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->  
+        
+                </tr>
+            <% }
+            
+             }else{ %>
+                 <tr>
+                    <td colspan="3">No se encontraron categorias</td>
+                 </tr>
+            <% } %>
+        
+
+        
+    </tbody>
+    </table>
+    </div>
+  
+        
+    </div>
+    
+   
+      
+      
+    <script src="/js/jquery-2.0.2.min.js"></script>   
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/all.js"></script>
+  </body>
+</html>
+
